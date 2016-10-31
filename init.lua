@@ -56,6 +56,9 @@ minetest.register_globalstep(function()
 		end
 	end
 end)
+
+--Diese Funktion wurde aus https://github.com/minetest/minetest/blob/master/builtin/game/chatcommands.lua#L770 übernommen und abgewandelt.
+
 function timeofday()
 	local current_time = math.floor(core.get_timeofday() * 1440)
 	local minutes = current_time % 60
