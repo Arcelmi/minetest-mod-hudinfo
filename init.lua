@@ -1,12 +1,12 @@
-hud = {}
+hudinfo = {}
 --Einstellungen
-hud.time = true
-hud.item = true
+hudinfo.time = true
+hudinfo.item = true
 
 
 function register_hud(playername)
 	local player = minetest.get_player_by_name(playername)
-	if hud.item then	
+	if hudinfo.item then	
 		item = player:hud_add({
 			hud_elem_type = "text",
 			position = { x = 0.85, y=1.05 },
@@ -17,7 +17,7 @@ function register_hud(playername)
 			offset = { x = -262, y = -103}
 		})
 	end
-	if hud.time then
+	if hudinfo.time then
 		zeit = player:hud_add({
 			hud_elem_type = "text",
 			position = { x = 0.85, y=1.07 },
@@ -28,8 +28,8 @@ function register_hud(playername)
 			offset = { x = -262, y = -103}
 		})
 	end
-	hud[playername] = item
-	hud.zeit = zeit
+	hudinfo[playername] = item
+	hudinfo.zeit = zeit
 	return item, zeit
 end
 minetest.register_on_joinplayer(function(player)
@@ -48,17 +48,16 @@ end
 minetest.register_globalstep(function()
 	for _,player in ipairs(minetest.get_connected_players()) do
 		player_name=player:get_player_name()
-		if hud.item then
-			player:hud_change(hud[player_name], "text", itemstring(player))
+		if hudinfo.item then
+			player:hud_change(hudinfo[player_name], "text", itemstring(player))
 		end
-		if hud.time then
-			player:hud_change(hud.zeit, "text", timeofday())
+		if hudinfo.time then
+			player:hud_change(hudinfo.zeit, "text", timeofday())
 		end
 	end
 end)
 
 --Diese Funktion wurde aus https://github.com/minetest/minetest/blob/master/builtin/game/chatcommands.lua#L770 übernommen und abgewandelt.
-
 function timeofday()
 	local current_time = math.floor(core.get_timeofday() * 1440)
 	local minutes = current_time % 60
