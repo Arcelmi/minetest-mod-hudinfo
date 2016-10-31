@@ -35,7 +35,7 @@ end
 minetest.register_on_joinplayer(function(player)
 	local playername = player:get_player_name()
 	register_hud(playername)
-end)
+end) 
 
 function itemstring(player)
 	return tostring("Item: "..player:get_wielded_item():get_name()..", Menge: "..player:get_wielded_item():get_count()..", Haltbarkeit: "..prozent(player).."%")
