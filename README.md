@@ -1,3 +1,6 @@
+ACHTUNG!!! In letzter Zeit sehr verbuggt!!! Zur Zeit ist ein download nicht empfehlenswert!!! Bitte warte bis das Problem gelöst wurde!
+
+
 Dieser Mod fügt Minetest eine HUD mit nützlichen Informationen hinzu.
 
 Einstellungen:
