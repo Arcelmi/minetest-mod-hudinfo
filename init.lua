@@ -38,7 +38,6 @@ minetest.register_on_joinplayer(function(player)
 end) 
 
 function itemstring(player)
-	return tostring("Item: "..player:get_wielded_item():get_name()..", Menge: "..player:get_wielded_item():get_count()..", Haltbarkeit: "..prozent(player).."%")
 	item = player:get_wielded_item()
 	name = core.registered_items[item:get_name()]["description"]
 	if core.registered_items[item:get_name()].type=="tool" then
