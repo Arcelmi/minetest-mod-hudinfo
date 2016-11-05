@@ -38,14 +38,15 @@ minetest.register_on_joinplayer(function(player)
 end) 
 
 function itemstring(player)
-	local itemstring_item = player:get_wielded_item()
-	local itemstring_name = core.registered_items[itemstring_item:get_name()]["description"]
-	if core.registered_items[itemstring_item:get_name()].type=="tool" then
-		return tostring("Item: "..itemstring_name..", Haltbarkeit: "..prozent(player).."%")
-	elseif core.registered_items[itemstring_item:get_name()].type=="craft" then
+	return tostring("Item: "..player:get_wielded_item():get_name()..", Menge: "..player:get_wielded_item():get_count()..", Haltbarkeit: "..prozent(player).."%")
+	item = player:get_wielded_item()
+	name = core.registered_items[item:get_name()]["description"]
+	if core.registered_items[item:get_name()].type=="tool" then
+		return tostring("Item: "..name..", Haltbarkeit: "..prozent(player).."%")
+	elseif core.registered_items[item:get_name()].type=="craft" then
 		return tostring("Item: "..name..", Menge: "..item:get_count())
-	elseif core.registered_items[itemstring_item:get_name()].type=="node" then
-		return tostring("Item: "..itemstring_name..", Menge: "..item:get_count())
+	elseif core.registered_items[item:get_name()].type=="node" then
+		return tostring("Item: "..name..", Menge: "..item:get_count())
 	else
 		return " "
 	end
